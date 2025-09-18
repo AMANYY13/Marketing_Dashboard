@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --env-file=.env src/server.js",
+    "dev": "node --env-file=.env ./src/server.js",
     "prisma:pull": "prisma db pull",
     "prisma:generate": "prisma generate"
   },
