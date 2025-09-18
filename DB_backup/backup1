@@ -1,0 +1,1884 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict G5LCvwFFowrhmj03AZ3fBH8TakauEx41yp5FkcCPAECzfjMYEDl7683oXUuk94Z
+
+-- Dumped from database version 17.6
+-- Dumped by pg_dump version 17.6
+
+-- Started on 2025-09-18 15:16:03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 5 (class 2615 OID 17567)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 5067 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS '';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 224 (class 1259 OID 17692)
+-- Name: audience_growth_rate; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.audience_growth_rate (
+    date timestamp without time zone,
+    audience_growth_rate_daily__all_countries double precision,
+    audience_growth_rate_daily__egypt double precision,
+    audience_growth_rate_daily__saudi_arabia double precision,
+    audience_growth_rate_daily__united_states double precision,
+    audience_growth_rate_daily__united_arab_emirates double precision,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.audience_growth_rate OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 17741)
+-- Name: audience_growth_rate_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.audience_growth_rate_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.audience_growth_rate_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5069 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: audience_growth_rate_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.audience_growth_rate_id_seq OWNED BY public.audience_growth_rate.id;
+
+
+--
+-- TOC entry 228 (class 1259 OID 17709)
+-- Name: average_rating; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.average_rating (
+    date timestamp without time zone,
+    average_rating_per_interval_daily__all_countries text,
+    average_rating_per_interval_daily__egypt text,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.average_rating OWNER TO postgres;
+
+--
+-- TOC entry 236 (class 1259 OID 17749)
+-- Name: average_rating_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.average_rating_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.average_rating_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5070 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: average_rating_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.average_rating_id_seq OWNED BY public.average_rating.id;
+
+
+--
+-- TOC entry 233 (class 1259 OID 17726)
+-- Name: daily_active_users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.daily_active_users (
+    date timestamp without time zone,
+    dau__all_countries integer,
+    dau__egypt integer,
+    dau__saudi_arabia integer,
+    dau__united_states integer,
+    dau__united_arab_emirates integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.daily_active_users OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 17759)
+-- Name: daily_active_users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.daily_active_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.daily_active_users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5071 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: daily_active_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.daily_active_users_id_seq OWNED BY public.daily_active_users.id;
+
+
+--
+-- TOC entry 232 (class 1259 OID 17723)
+-- Name: device_acquisition; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.device_acquisition (
+    date timestamp without time zone,
+    device_acquisition__all_countries integer,
+    device_acquisition__united_arab_emirates integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.device_acquisition OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1259 OID 17767)
+-- Name: device_acquisition_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.device_acquisition_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.device_acquisition_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5072 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: device_acquisition_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.device_acquisition_id_seq OWNED BY public.device_acquisition.id;
+
+
+--
+-- TOC entry 218 (class 1259 OID 17666)
+-- Name: facebook_demographics; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.facebook_demographics (
+    "Report: Date" timestamp without time zone,
+    "Audience: Country" text,
+    "Engagement: Page likes" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.facebook_demographics OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1259 OID 17775)
+-- Name: facebook_demographics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.facebook_demographics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.facebook_demographics_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5073 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: facebook_demographics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.facebook_demographics_id_seq OWNED BY public.facebook_demographics.id;
+
+
+--
+-- TOC entry 217 (class 1259 OID 17663)
+-- Name: facebook_insights; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.facebook_insights (
+    "Report: Date" timestamp without time zone,
+    "Engagement: Page views" integer,
+    "Engagement: New followers" integer,
+    "Engagement: New Page likes" integer,
+    "Engagement: New Page unlikes" integer,
+    "Engagement: Posts engagements" integer,
+    "Performance: Impressions" integer,
+    "Performance: Reach" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.facebook_insights OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1259 OID 17785)
+-- Name: facebook_insights_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.facebook_insights_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.facebook_insights_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5074 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: facebook_insights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.facebook_insights_id_seq OWNED BY public.facebook_insights.id;
+
+
+--
+-- TOC entry 226 (class 1259 OID 17700)
+-- Name: first_opens; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.first_opens (
+    date timestamp without time zone,
+    first_opens_per_interval_daily__all_countries integer,
+    first_opens_per_interval_daily__egypt integer,
+    first_opens_per_interval_daily__saudi_arabia integer,
+    first_opens_per_interval_daily__united_states integer,
+    first_opens_per_interval_daily__united_arab_emirates integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.first_opens OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1259 OID 17793)
+-- Name: first_opens_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.first_opens_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.first_opens_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5075 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: first_opens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.first_opens_id_seq OWNED BY public.first_opens.id;
+
+
+--
+-- TOC entry 229 (class 1259 OID 17714)
+-- Name: google_play_ratings; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.google_play_ratings (
+    date timestamp without time zone,
+    google_play_rating__all_countries double precision,
+    google_play_rating__united_arab_emirates double precision,
+    google_play_rating__antigua_and_barbuda double precision,
+    google_play_rating__albania double precision,
+    google_play_rating__armenia double precision,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.google_play_ratings OWNER TO postgres;
+
+--
+-- TOC entry 242 (class 1259 OID 17801)
+-- Name: google_play_ratings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.google_play_ratings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.google_play_ratings_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5076 (class 0 OID 0)
+-- Dependencies: 242
+-- Name: google_play_ratings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.google_play_ratings_id_seq OWNED BY public.google_play_ratings.id;
+
+
+--
+-- TOC entry 222 (class 1259 OID 17684)
+-- Name: instagram_ageandgender; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.instagram_ageandgender (
+    "Audience: Age" text,
+    "Audience: Gender" text,
+    "Engagement: Followers" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.instagram_ageandgender OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1259 OID 17809)
+-- Name: instagram_ageandgender_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.instagram_ageandgender_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.instagram_ageandgender_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5077 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: instagram_ageandgender_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.instagram_ageandgender_id_seq OWNED BY public.instagram_ageandgender.id;
+
+
+--
+-- TOC entry 220 (class 1259 OID 17676)
+-- Name: instagram_demographics; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.instagram_demographics (
+    "Audience: Country" text,
+    "Engagement: Followers" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.instagram_demographics OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1259 OID 17819)
+-- Name: instagram_demographics_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.instagram_demographics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.instagram_demographics_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5078 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: instagram_demographics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.instagram_demographics_id_seq OWNED BY public.instagram_demographics.id;
+
+
+--
+-- TOC entry 221 (class 1259 OID 17681)
+-- Name: instagram_followers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.instagram_followers (
+    "Report: Date" timestamp without time zone,
+    "Performance: Reach" integer,
+    "Engagement: New followers" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.instagram_followers OWNER TO postgres;
+
+--
+-- TOC entry 245 (class 1259 OID 17829)
+-- Name: instagram_followers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.instagram_followers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.instagram_followers_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5079 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: instagram_followers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.instagram_followers_id_seq OWNED BY public.instagram_followers.id;
+
+
+--
+-- TOC entry 219 (class 1259 OID 17671)
+-- Name: instagram_insights; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.instagram_insights (
+    "Report: Start date" timestamp without time zone,
+    "Report: End date" timestamp without time zone,
+    "Performance: Reach" integer,
+    "Engagement: Views" integer,
+    "Engagement: Follows and unfollows" text,
+    "Performance: Visits (views)" integer,
+    "Performance: Engagements" integer,
+    "Engagement: Accounts engaged" integer,
+    "Clicks: Website clicks" integer,
+    "Clicks: Profile links clicks" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.instagram_insights OWNER TO postgres;
+
+--
+-- TOC entry 246 (class 1259 OID 17837)
+-- Name: instagram_insights_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.instagram_insights_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.instagram_insights_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5080 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: instagram_insights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.instagram_insights_id_seq OWNED BY public.instagram_insights.id;
+
+
+--
+-- TOC entry 231 (class 1259 OID 17720)
+-- Name: installed_audience; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.installed_audience (
+    date timestamp without time zone,
+    installed_audience__all_countries integer,
+    installed_audience__united_arab_emirates integer,
+    installed_audience__albania integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.installed_audience OWNER TO postgres;
+
+--
+-- TOC entry 247 (class 1259 OID 17847)
+-- Name: installed_audience_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.installed_audience_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.installed_audience_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5081 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: installed_audience_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.installed_audience_id_seq OWNED BY public.installed_audience.id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 17717)
+-- Name: installed_base; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.installed_base (
+    date timestamp without time zone,
+    installed_audience__all_countries integer,
+    installed_audience__united_arab_emirates integer,
+    installed_audience__albania integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.installed_base OWNER TO postgres;
+
+--
+-- TOC entry 248 (class 1259 OID 17855)
+-- Name: installed_base_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.installed_base_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.installed_base_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5082 (class 0 OID 0)
+-- Dependencies: 248
+-- Name: installed_base_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.installed_base_id_seq OWNED BY public.installed_base.id;
+
+
+--
+-- TOC entry 227 (class 1259 OID 17706)
+-- Name: monthly_active_users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.monthly_active_users (
+    date timestamp without time zone,
+    mau__all_countries integer,
+    mau__egypt integer,
+    mau__saudi_arabia integer,
+    mau__united_states integer,
+    mau__united_arab_emirates integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.monthly_active_users OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1259 OID 17863)
+-- Name: monthly_active_users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.monthly_active_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.monthly_active_users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5083 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: monthly_active_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.monthly_active_users_id_seq OWNED BY public.monthly_active_users.id;
+
+
+--
+-- TOC entry 234 (class 1259 OID 17735)
+-- Name: tiktok_insights; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tiktok_insights (
+    "Account ID" text,
+    "Account name" text,
+    "Currency" text,
+    "Cost_1" double precision,
+    "CPC" double precision,
+    "CPM" double precision,
+    "Impression" integer,
+    "Clicks" integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.tiktok_insights OWNER TO postgres;
+
+--
+-- TOC entry 250 (class 1259 OID 17871)
+-- Name: tiktok_insights_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tiktok_insights_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.tiktok_insights_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5084 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: tiktok_insights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tiktok_insights_id_seq OWNED BY public.tiktok_insights.id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 17689)
+-- Name: total_no_of_installation; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.total_no_of_installation (
+    date timestamp without time zone,
+    installed_audience__all_countries integer,
+    installed_audience__egypt integer,
+    installed_audience__saudi_arabia integer,
+    installed_audience__united_states integer,
+    installed_audience__united_arab_emirates integer,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.total_no_of_installation OWNER TO postgres;
+
+--
+-- TOC entry 251 (class 1259 OID 17881)
+-- Name: total_no_of_installation_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.total_no_of_installation_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.total_no_of_installation_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5085 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: total_no_of_installation_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.total_no_of_installation_id_seq OWNED BY public.total_no_of_installation.id;
+
+
+--
+-- TOC entry 225 (class 1259 OID 17695)
+-- Name: user_loss_rate; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_loss_rate (
+    date timestamp without time zone,
+    user_loss_rate_daily__all_countries double precision,
+    user_loss_rate_daily__egypt double precision,
+    user_loss_rate_daily__saudi_arabia text,
+    user_loss_rate_daily__united_states text,
+    user_loss_rate_daily__united_arab_emirates text,
+    id bigint NOT NULL
+);
+
+
+ALTER TABLE public.user_loss_rate OWNER TO postgres;
+
+--
+-- TOC entry 252 (class 1259 OID 17889)
+-- Name: user_loss_rate_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.user_loss_rate_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.user_loss_rate_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5086 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: user_loss_rate_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.user_loss_rate_id_seq OWNED BY public.user_loss_rate.id;
+
+
+--
+-- TOC entry 4834 (class 2604 OID 17742)
+-- Name: audience_growth_rate id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.audience_growth_rate ALTER COLUMN id SET DEFAULT nextval('public.audience_growth_rate_id_seq'::regclass);
+
+
+--
+-- TOC entry 4838 (class 2604 OID 17750)
+-- Name: average_rating id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.average_rating ALTER COLUMN id SET DEFAULT nextval('public.average_rating_id_seq'::regclass);
+
+
+--
+-- TOC entry 4843 (class 2604 OID 17760)
+-- Name: daily_active_users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.daily_active_users ALTER COLUMN id SET DEFAULT nextval('public.daily_active_users_id_seq'::regclass);
+
+
+--
+-- TOC entry 4842 (class 2604 OID 17768)
+-- Name: device_acquisition id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.device_acquisition ALTER COLUMN id SET DEFAULT nextval('public.device_acquisition_id_seq'::regclass);
+
+
+--
+-- TOC entry 4828 (class 2604 OID 17776)
+-- Name: facebook_demographics id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.facebook_demographics ALTER COLUMN id SET DEFAULT nextval('public.facebook_demographics_id_seq'::regclass);
+
+
+--
+-- TOC entry 4827 (class 2604 OID 17786)
+-- Name: facebook_insights id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.facebook_insights ALTER COLUMN id SET DEFAULT nextval('public.facebook_insights_id_seq'::regclass);
+
+
+--
+-- TOC entry 4836 (class 2604 OID 17794)
+-- Name: first_opens id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.first_opens ALTER COLUMN id SET DEFAULT nextval('public.first_opens_id_seq'::regclass);
+
+
+--
+-- TOC entry 4839 (class 2604 OID 17802)
+-- Name: google_play_ratings id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.google_play_ratings ALTER COLUMN id SET DEFAULT nextval('public.google_play_ratings_id_seq'::regclass);
+
+
+--
+-- TOC entry 4832 (class 2604 OID 17810)
+-- Name: instagram_ageandgender id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_ageandgender ALTER COLUMN id SET DEFAULT nextval('public.instagram_ageandgender_id_seq'::regclass);
+
+
+--
+-- TOC entry 4830 (class 2604 OID 17820)
+-- Name: instagram_demographics id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_demographics ALTER COLUMN id SET DEFAULT nextval('public.instagram_demographics_id_seq'::regclass);
+
+
+--
+-- TOC entry 4831 (class 2604 OID 17830)
+-- Name: instagram_followers id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_followers ALTER COLUMN id SET DEFAULT nextval('public.instagram_followers_id_seq'::regclass);
+
+
+--
+-- TOC entry 4829 (class 2604 OID 17838)
+-- Name: instagram_insights id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_insights ALTER COLUMN id SET DEFAULT nextval('public.instagram_insights_id_seq'::regclass);
+
+
+--
+-- TOC entry 4841 (class 2604 OID 17848)
+-- Name: installed_audience id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.installed_audience ALTER COLUMN id SET DEFAULT nextval('public.installed_audience_id_seq'::regclass);
+
+
+--
+-- TOC entry 4840 (class 2604 OID 17856)
+-- Name: installed_base id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.installed_base ALTER COLUMN id SET DEFAULT nextval('public.installed_base_id_seq'::regclass);
+
+
+--
+-- TOC entry 4837 (class 2604 OID 17864)
+-- Name: monthly_active_users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.monthly_active_users ALTER COLUMN id SET DEFAULT nextval('public.monthly_active_users_id_seq'::regclass);
+
+
+--
+-- TOC entry 4844 (class 2604 OID 17872)
+-- Name: tiktok_insights id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tiktok_insights ALTER COLUMN id SET DEFAULT nextval('public.tiktok_insights_id_seq'::regclass);
+
+
+--
+-- TOC entry 4833 (class 2604 OID 17882)
+-- Name: total_no_of_installation id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.total_no_of_installation ALTER COLUMN id SET DEFAULT nextval('public.total_no_of_installation_id_seq'::regclass);
+
+
+--
+-- TOC entry 4835 (class 2604 OID 17890)
+-- Name: user_loss_rate id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_loss_rate ALTER COLUMN id SET DEFAULT nextval('public.user_loss_rate_id_seq'::regclass);
+
+
+--
+-- TOC entry 5033 (class 0 OID 17692)
+-- Dependencies: 224
+-- Data for Name: audience_growth_rate; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.audience_growth_rate (date, audience_growth_rate_daily__all_countries, audience_growth_rate_daily__egypt, audience_growth_rate_daily__saudi_arabia, audience_growth_rate_daily__united_states, audience_growth_rate_daily__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	0.08	0.09	0.26	0.05	0.15	1
+2025-08-06 00:00:00	0.09	0.09	0.23	0	0.14	2
+2025-08-07 00:00:00	0.09	0.1	0.24	0.16	0.17	3
+2025-08-08 00:00:00	0.1	0.11	0.26	0.37	0.2	4
+2025-08-09 00:00:00	0.11	0.12	0.24	0.09	0.14	5
+2025-08-10 00:00:00	0.12	0.13	0.22	0.33	0.19	6
+2025-08-11 00:00:00	0.13	0.13	0.16	0.33	0.12	7
+2025-08-12 00:00:00	0.14	0.14	0.18	0.5	0.17	8
+2025-08-13 00:00:00	0.14	0.14	0.18	0.5	0.13	9
+2025-08-14 00:00:00	0.14	0.15	0.16	0.79	0.14	10
+2025-08-15 00:00:00	0.15	0.16	0.1	0.11	0.11	11
+2025-08-16 00:00:00	0.16	0.16	0.1	0.25	0.11	12
+2025-08-17 00:00:00	0.16	0.17	0.09	0.04	0.1	13
+2025-08-18 00:00:00	0.17	0.17	0.08	0.14	0.06	14
+2025-08-19 00:00:00	0.16	0.17	0.11	0.17	0.01	15
+2025-08-20 00:00:00	0.16	0.17	0.1	0.06	0.03	16
+2025-08-21 00:00:00	0.16	0.16	0.05	-0.05	0.03	17
+2025-08-22 00:00:00	0.16	0.17	0.06	0.17	0.11	18
+2025-08-23 00:00:00	0.16	0.16	0.07	0.21	0.08	19
+2025-08-24 00:00:00	0.16	0.16	0.06	0.26	0.15	20
+2025-08-25 00:00:00	0.16	0.16	0.07	0.25	0.15	21
+2025-08-26 00:00:00	0.16	0.16	0.07	0.37	0.07	22
+2025-08-27 00:00:00	0.16	0.16	0.05	0.6	0.1	23
+2025-08-28 00:00:00	0.15	0.16	0.07	0.64	0.12	24
+2025-08-29 00:00:00	0.15	0.16	0.23	8.33	0.1	25
+2025-08-30 00:00:00	0.15	0.16	0.21	6.53	0.03	26
+2025-08-31 00:00:00	0.15	0.16	0.23	7.5	0.13	27
+\.
+
+
+--
+-- TOC entry 5037 (class 0 OID 17709)
+-- Dependencies: 228
+-- Data for Name: average_rating; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.average_rating (date, average_rating_per_interval_daily__all_countries, average_rating_per_interval_daily__egypt, id) FROM stdin;
+2025-08-05 00:00:00	-	-	1
+2025-08-06 00:00:00	-	-	2
+2025-08-07 00:00:00	-	-	3
+2025-08-08 00:00:00	-	-	4
+2025-08-09 00:00:00	-	-	5
+2025-08-10 00:00:00	-	-	6
+2025-08-11 00:00:00	5	5	7
+2025-08-12 00:00:00	-	-	8
+2025-08-13 00:00:00	-	-	9
+2025-08-14 00:00:00	-	-	10
+2025-08-15 00:00:00	-	-	11
+2025-08-16 00:00:00	-	-	12
+2025-08-17 00:00:00	-	-	13
+2025-08-18 00:00:00	-	-	14
+2025-08-19 00:00:00	-	-	15
+2025-08-20 00:00:00	-	-	16
+2025-08-21 00:00:00	-	-	17
+2025-08-22 00:00:00	-	-	18
+2025-08-23 00:00:00	-	-	19
+2025-08-24 00:00:00	-	-	20
+2025-08-25 00:00:00	-	-	21
+2025-08-26 00:00:00	5	5	22
+2025-08-27 00:00:00	-	-	23
+2025-08-28 00:00:00	-	-	24
+2025-08-29 00:00:00	-	-	25
+2025-08-30 00:00:00	-	-	26
+2025-08-31 00:00:00	-	-	27
+\.
+
+
+--
+-- TOC entry 5042 (class 0 OID 17726)
+-- Dependencies: 233
+-- Data for Name: daily_active_users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.daily_active_users (date, dau__all_countries, dau__egypt, dau__saudi_arabia, dau__united_states, dau__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	2004	1885	41	14	6	1
+2025-08-06 00:00:00	2013	1900	50	11	10	2
+2025-08-07 00:00:00	2066	1945	44	13	7	3
+2025-08-08 00:00:00	2135	2027	46	17	4	4
+2025-08-09 00:00:00	1984	1885	44	20	8	5
+2025-08-10 00:00:00	1885	1790	43	11	4	6
+2025-08-11 00:00:00	1902	1802	42	11	8	7
+2025-08-12 00:00:00	1879	1799	32	17	7	8
+2025-08-13 00:00:00	1867	1787	37	9	8	9
+2025-08-14 00:00:00	1900	1811	37	13	5	10
+2025-08-15 00:00:00	1950	1859	38	9	6	11
+2025-08-16 00:00:00	1821	1723	34	10	4	12
+2025-08-17 00:00:00	1684	1575	32	17	7	13
+2025-08-18 00:00:00	1759	1671	30	14	5	14
+2025-08-19 00:00:00	1708	1621	33	17	7	15
+2025-08-20 00:00:00	1704	1622	34	22	6	16
+2025-08-21 00:00:00	1755	1672	38	13	3	17
+2025-08-22 00:00:00	1831	1743	34	13	3	18
+2025-08-23 00:00:00	1727	1653	31	13	7	19
+2025-08-24 00:00:00	1658	1561	43	13	6	20
+2025-08-25 00:00:00	1571	1492	31	10	9	21
+\.
+
+
+--
+-- TOC entry 5041 (class 0 OID 17723)
+-- Dependencies: 232
+-- Data for Name: device_acquisition; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.device_acquisition (date, device_acquisition__all_countries, device_acquisition__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	51	1	1
+2025-08-06 00:00:00	52	1	2
+2025-08-07 00:00:00	72	0	3
+2025-08-08 00:00:00	52	0	4
+2025-08-09 00:00:00	72	4	5
+2025-08-10 00:00:00	49	0	6
+2025-08-11 00:00:00	42	0	7
+2025-08-12 00:00:00	55	0	8
+2025-08-13 00:00:00	54	0	9
+2025-08-14 00:00:00	51	1	10
+2025-08-15 00:00:00	54	0	11
+2025-08-16 00:00:00	50	0	12
+2025-08-17 00:00:00	28	0	13
+2025-08-18 00:00:00	33	0	14
+2025-08-19 00:00:00	46	2	15
+2025-08-20 00:00:00	45	0	16
+2025-08-21 00:00:00	45	1	17
+2025-08-22 00:00:00	63	1	18
+2025-08-23 00:00:00	63	0	19
+2025-08-24 00:00:00	48	0	20
+2025-08-25 00:00:00	38	0	21
+2025-08-26 00:00:00	66	0	22
+2025-08-27 00:00:00	33	0	23
+2025-08-28 00:00:00	62	0	24
+2025-08-29 00:00:00	43	0	25
+2025-08-30 00:00:00	39	0	26
+2025-08-31 00:00:00	28	0	27
+2025-09-01 00:00:00	36	0	28
+\.
+
+
+--
+-- TOC entry 5027 (class 0 OID 17666)
+-- Dependencies: 218
+-- Data for Name: facebook_demographics; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.facebook_demographics ("Report: Date", "Audience: Country", "Engagement: Page likes", id) FROM stdin;
+2025-09-01 00:00:00	South Sudan	1	1
+2025-09-01 00:00:00	Germany	1	2
+2025-09-01 00:00:00	Egypt	5772	3
+2025-09-01 00:00:00	Palestine, State of	1	4
+2025-09-01 00:00:00	Central African Republic	1	5
+2025-09-01 00:00:00	United Arab Emirates	8	6
+2025-09-01 00:00:00	Jordan	2	7
+2025-09-01 00:00:00	Lithuania	1	8
+2025-09-01 00:00:00	Iraq	1	9
+2025-09-01 00:00:00	Italy	2	10
+2025-09-01 00:00:00	Yemen	1	11
+2025-09-01 00:00:00	Kuwait	5	12
+2025-09-01 00:00:00	Libya	4	13
+2025-09-01 00:00:00	Saudi Arabia	49	14
+2025-09-01 00:00:00	Qatar	3	15
+2025-09-01 00:00:00	Sudan	7	16
+2025-09-01 00:00:00	Nigeria	1	17
+2025-09-01 00:00:00	Kenya	1	18
+2025-09-01 00:00:00	United Kingdom	1	19
+2025-09-01 00:00:00	Canada	1	20
+2025-09-01 00:00:00	Türkiye	1	21
+\.
+
+
+--
+-- TOC entry 5026 (class 0 OID 17663)
+-- Dependencies: 217
+-- Data for Name: facebook_insights; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.facebook_insights ("Report: Date", "Engagement: Page views", "Engagement: New followers", "Engagement: New Page likes", "Engagement: New Page unlikes", "Engagement: Posts engagements", "Performance: Impressions", "Performance: Reach", id) FROM stdin;
+2025-07-01 00:00:00	66	12	5	0	3964	347850	282011	1
+2025-07-02 00:00:00	84	7	5	0	3794	340695	270335	2
+2025-07-03 00:00:00	79	16	8	2	3935	365481	297535	3
+2025-07-04 00:00:00	74	9	6	1	4272	421136	335046	4
+2025-07-05 00:00:00	47	6	2	0	4098	398263	318813	5
+2025-07-06 00:00:00	68	5	5	0	3929	375961	307596	6
+2025-07-07 00:00:00	68	6	6	0	4021	390870	316113	7
+2025-07-08 00:00:00	53	8	4	0	4177	349059	294578	8
+2025-07-09 00:00:00	70	10	6	0	3511	327673	271447	9
+2025-07-10 00:00:00	49	10	6	0	3687	335846	272645	10
+2025-07-11 00:00:00	112	13	10	0	4255	379068	304297	11
+2025-07-12 00:00:00	86	8	7	0	5023	446995	343218	12
+2025-07-13 00:00:00	94	12	5	0	4386	410322	337085	13
+2025-07-14 00:00:00	64	10	5	0	4239	449597	351860	14
+2025-07-15 00:00:00	35	4	2	0	3848	410264	315280	15
+2025-07-16 00:00:00	61	11	9	0	3753	449002	343756	16
+2025-07-17 00:00:00	65	6	4	0	3703	408332	338284	17
+2025-07-18 00:00:00	65	11	6	0	4276	454641	367881	18
+2025-07-19 00:00:00	64	15	7	0	4118	440214	369049	19
+2025-07-20 00:00:00	46	6	4	0	3759	404926	332188	20
+2025-07-21 00:00:00	16	2	0	0	512	18603	17249	21
+2025-07-22 00:00:00	4	0	0	0	12	59	38	22
+2025-07-23 00:00:00	0	0	0	0	6	100	82	23
+2025-07-24 00:00:00	7	0	0	0	5	33	25	24
+2025-07-25 00:00:00	0	1	0	0	6	37	30	25
+2025-07-26 00:00:00	0	0	0	0	3	26	26	26
+2025-07-27 00:00:00	3	0	0	0	3	12	9	27
+2025-07-28 00:00:00	2	0	0	0	4	26	24	28
+2025-07-29 00:00:00	4	1	1	0	2	16	14	29
+2025-07-30 00:00:00	18	2	2	0	4	186	129	30
+2025-07-31 00:00:00	3	0	0	0	1	37	35	31
+2025-08-01 00:00:00	4	0	0	0	1	22	20	32
+2025-08-02 00:00:00	7	0	0	0	2	28	13	33
+2025-08-03 00:00:00	26	0	0	0	0	52	31	34
+2025-08-04 00:00:00	13	1	0	0	1	105	91	35
+2025-08-05 00:00:00	0	0	0	0	1	23	23	36
+2025-08-06 00:00:00	6	0	0	0	1	36	16	37
+2025-08-07 00:00:00	12	1	1	0	5	86	30	38
+2025-08-08 00:00:00	4	1	0	0	2	17	14	39
+2025-08-09 00:00:00	3	0	0	0	0	19	16	40
+2025-08-10 00:00:00	11	1	1	0	1	48	17	41
+2025-08-11 00:00:00	0	0	0	0	1	19	18	42
+2025-08-12 00:00:00	0	0	0	0	0	14	14	43
+2025-08-13 00:00:00	1	3	1	0	1	29	28	44
+2025-08-14 00:00:00	3	0	0	0	0	12	12	45
+2025-08-15 00:00:00	3	0	0	0	0	17	14	46
+2025-08-16 00:00:00	4	0	0	0	1	8	7	47
+2025-08-17 00:00:00	8	0	0	0	0	17	14	48
+2025-08-18 00:00:00	41	0	0	0	1	36	12	49
+2025-08-19 00:00:00	19	1	0	1	1	22	10	50
+2025-08-20 00:00:00	1	0	0	0	0	4	3	51
+2025-08-21 00:00:00	0	0	0	1	0	7	7	52
+2025-08-22 00:00:00	7	0	0	0	0	35	17	53
+2025-08-23 00:00:00	10	0	0	0	0	11	10	54
+2025-08-24 00:00:00	3	0	0	0	0	43	7	55
+2025-08-25 00:00:00	0	0	0	0	0	11	11	56
+2025-08-26 00:00:00	13	0	0	0	2	77	71	57
+2025-08-27 00:00:00	15	0	0	0	0	45	13	58
+2025-08-28 00:00:00	0	0	0	0	0	7	7	59
+2025-08-29 00:00:00	3	1	1	1	1	8	6	60
+2025-08-30 00:00:00	3	0	0	0	0	23	12	61
+2025-08-31 00:00:00	3	0	0	0	0	8	8	62
+2025-09-01 00:00:00	9	0	0	0	0	8	8	63
+2025-09-02 00:00:00	0	0	0	0	0	0	0	64
+\.
+
+
+--
+-- TOC entry 5035 (class 0 OID 17700)
+-- Dependencies: 226
+-- Data for Name: first_opens; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.first_opens (date, first_opens_per_interval_daily__all_countries, first_opens_per_interval_daily__egypt, first_opens_per_interval_daily__saudi_arabia, first_opens_per_interval_daily__united_states, first_opens_per_interval_daily__united_arab_emirates, id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5038 (class 0 OID 17714)
+-- Dependencies: 229
+-- Data for Name: google_play_ratings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.google_play_ratings (date, google_play_rating__all_countries, google_play_rating__united_arab_emirates, google_play_rating__antigua_and_barbuda, google_play_rating__albania, google_play_rating__armenia, id) FROM stdin;
+2025-08-05 00:00:00	3.68	3.75	3.75	3.75	3.75	1
+2025-08-06 00:00:00	3.68	3.75	3.75	3.75	3.75	2
+2025-08-07 00:00:00	3.68	3.75	3.75	3.75	3.75	3
+2025-08-08 00:00:00	3.68	3.75	3.75	3.75	3.75	4
+2025-08-09 00:00:00	3.68	3.75	3.75	3.75	3.75	5
+2025-08-10 00:00:00	3.68	3.75	3.75	3.75	3.75	6
+2025-08-11 00:00:00	3.68	3.75	3.75	3.75	3.75	7
+2025-08-12 00:00:00	3.71	3.76	3.76	3.76	3.76	8
+2025-08-13 00:00:00	3.71	3.76	3.76	3.76	3.76	9
+2025-08-14 00:00:00	3.71	3.76	3.76	3.76	3.76	10
+2025-08-15 00:00:00	3.71	3.76	3.76	3.76	3.76	11
+2025-08-16 00:00:00	3.71	3.76	3.76	3.76	3.76	12
+2025-08-17 00:00:00	3.71	3.76	3.76	3.76	3.76	13
+2025-08-18 00:00:00	3.71	3.76	3.76	3.76	3.76	14
+2025-08-19 00:00:00	3.72	3.75	3.75	3.75	3.75	15
+2025-08-20 00:00:00	3.72	3.75	3.75	3.75	3.75	16
+2025-08-21 00:00:00	3.72	3.75	3.75	3.75	3.75	17
+2025-08-22 00:00:00	3.72	3.75	3.75	3.75	3.75	18
+2025-08-23 00:00:00	3.72	3.75	3.75	3.75	3.75	19
+2025-08-24 00:00:00	3.72	3.75	3.75	3.75	3.75	20
+2025-08-25 00:00:00	3.72	3.75	3.75	3.75	3.75	21
+2025-08-26 00:00:00	3.71	3.76	3.76	3.76	3.76	22
+2025-08-27 00:00:00	3.72	3.75	3.75	3.75	3.75	23
+2025-08-28 00:00:00	3.72	3.75	3.75	3.75	3.75	24
+2025-08-29 00:00:00	3.72	3.75	3.75	3.75	3.75	25
+2025-08-30 00:00:00	3.72	3.75	3.75	3.75	3.75	26
+2025-08-31 00:00:00	3.72	3.75	3.75	3.75	3.75	27
+2025-09-01 00:00:00	3.72	3.75	3.75	3.75	3.75	28
+\.
+
+
+--
+-- TOC entry 5031 (class 0 OID 17684)
+-- Dependencies: 222
+-- Data for Name: instagram_ageandgender; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.instagram_ageandgender ("Audience: Age", "Audience: Gender", "Engagement: Followers", id) FROM stdin;
+13-17	F	5	1
+18-24	F	436	2
+25-34	F	2979	3
+35-44	F	1630	4
+45-54	F	244	5
+55-64	F	77	6
+65+	F	38	7
+13-17	M	4	8
+18-24	M	42	9
+25-34	M	196	10
+35-44	M	265	11
+45-54	M	85	12
+55-64	M	20	13
+65+	M	10	14
+13-17	U	1	15
+18-24	U	83	16
+25-34	U	334	17
+35-44	U	214	18
+45-54	U	34	19
+55-64	U	11	20
+65+	U	4	21
+\.
+
+
+--
+-- TOC entry 5029 (class 0 OID 17676)
+-- Dependencies: 220
+-- Data for Name: instagram_demographics; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.instagram_demographics ("Audience: Country", "Engagement: Followers", id) FROM stdin;
+Norway	1	1
+Germany	4	2
+Palestine, State of	5	3
+Portugal	1	4
+Jordan	27	5
+Bahrain	1	6
+France	2	7
+Yemen	3	8
+Libya	2	9
+Saudi Arabia	246	10
+Qatar	78	11
+Sudan	1	12
+Sweden	2	13
+Morocco	11	14
+Algeria	10	15
+Canada	3	16
+United States of America	4	17
+Oman	21	18
+Egypt	6223	19
+Israel	2	20
+United Arab Emirates	20	21
+India	3	22
+Syrian Arab Republic	9	23
+Iraq	11	24
+Iran (Islamic Republic of)	1	25
+Italy	3	26
+Kuwait	6	27
+Spain	1	28
+Australia	1	29
+Lebanon	3	30
+Tunisia	2	31
+Netherlands	1	32
+Türkiye	4	33
+\.
+
+
+--
+-- TOC entry 5030 (class 0 OID 17681)
+-- Dependencies: 221
+-- Data for Name: instagram_followers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.instagram_followers ("Report: Date", "Performance: Reach", "Engagement: New followers", id) FROM stdin;
+2025-08-04 00:00:00	43	2	1
+2025-08-05 00:00:00	9	4	2
+2025-08-06 00:00:00	48	3	3
+2025-08-07 00:00:00	143	2	4
+2025-08-08 00:00:00	19	2	5
+2025-08-09 00:00:00	9	1	6
+2025-08-10 00:00:00	5	3	7
+2025-08-11 00:00:00	4	4	8
+2025-08-12 00:00:00	5	4	9
+2025-08-13 00:00:00	36	1	10
+2025-08-14 00:00:00	5	3	11
+2025-08-15 00:00:00	2	1	12
+2025-08-16 00:00:00	2	1	13
+2025-08-17 00:00:00	2	2	14
+2025-08-18 00:00:00	4	1	15
+2025-08-19 00:00:00	1	1	16
+2025-08-20 00:00:00	3	0	17
+2025-08-21 00:00:00	2	2	18
+2025-08-22 00:00:00	2	2	19
+2025-08-23 00:00:00	2	0	20
+2025-08-24 00:00:00	3	1	21
+2025-08-25 00:00:00	3	1	22
+2025-08-26 00:00:00	26	1	23
+2025-08-27 00:00:00	12	2	24
+2025-08-28 00:00:00	12	1	25
+2025-08-29 00:00:00	7	2	26
+2025-08-30 00:00:00	3	2	27
+2025-08-31 00:00:00	7	0	28
+2025-09-01 00:00:00	5	0	29
+2025-09-02 00:00:00	0	0	30
+\.
+
+
+--
+-- TOC entry 5028 (class 0 OID 17671)
+-- Dependencies: 219
+-- Data for Name: instagram_insights; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.instagram_insights ("Report: Start date", "Report: End date", "Performance: Reach", "Engagement: Views", "Engagement: Follows and unfollows", "Performance: Visits (views)", "Performance: Engagements", "Engagement: Accounts engaged", "Clicks: Website clicks", "Clicks: Profile links clicks", id) FROM stdin;
+2025-08-03 00:00:00	2025-08-31 00:00:00	308	1257	\N	107	27	16	1	0	1
+2025-09-01 00:00:00	2025-09-02 00:00:00	5	35	\N	3	0	0	0	0	2
+\.
+
+
+--
+-- TOC entry 5040 (class 0 OID 17720)
+-- Dependencies: 231
+-- Data for Name: installed_audience; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.installed_audience (date, installed_audience__all_countries, installed_audience__united_arab_emirates, installed_audience__albania, id) FROM stdin;
+2025-08-05 00:00:00	54873	127	0	1
+2025-08-06 00:00:00	54592	124	0	2
+2025-08-07 00:00:00	54321	130	0	3
+2025-08-08 00:00:00	53938	126	0	4
+2025-08-09 00:00:00	53681	124	0	5
+2025-08-10 00:00:00	53450	127	0	6
+2025-08-11 00:00:00	53097	124	0	7
+2025-08-12 00:00:00	52779	127	0	8
+2025-08-13 00:00:00	52528	124	0	9
+2025-08-14 00:00:00	52267	124	0	10
+2025-08-15 00:00:00	51969	122	0	11
+2025-08-16 00:00:00	51552	121	0	12
+2025-08-17 00:00:00	51242	124	0	13
+2025-08-18 00:00:00	50838	120	0	14
+2025-08-19 00:00:00	50594	114	0	15
+2025-08-20 00:00:00	50308	125	1	16
+2025-08-21 00:00:00	49850	116	1	17
+2025-08-22 00:00:00	49609	111	1	18
+2025-08-23 00:00:00	49298	116	1	19
+2025-08-24 00:00:00	49022	112	1	20
+2025-08-25 00:00:00	48656	110	1	21
+2025-08-26 00:00:00	48304	112	1	22
+2025-08-27 00:00:00	48107	111	1	23
+2025-08-28 00:00:00	47889	110	1	24
+2025-08-29 00:00:00	47683	137	1	25
+2025-08-30 00:00:00	47447	131	1	26
+2025-08-31 00:00:00	47233	133	1	27
+\.
+
+
+--
+-- TOC entry 5039 (class 0 OID 17717)
+-- Dependencies: 230
+-- Data for Name: installed_base; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.installed_base (date, installed_audience__all_countries, installed_audience__united_arab_emirates, installed_audience__albania, id) FROM stdin;
+2025-08-05 00:00:00	54873	127	0	1
+2025-08-06 00:00:00	54592	124	0	2
+2025-08-07 00:00:00	54321	130	0	3
+2025-08-08 00:00:00	53938	126	0	4
+2025-08-09 00:00:00	53681	124	0	5
+2025-08-10 00:00:00	53450	127	0	6
+2025-08-11 00:00:00	53097	124	0	7
+2025-08-12 00:00:00	52779	127	0	8
+2025-08-13 00:00:00	52528	124	0	9
+2025-08-14 00:00:00	52267	124	0	10
+2025-08-15 00:00:00	51969	122	0	11
+2025-08-16 00:00:00	51552	121	0	12
+2025-08-17 00:00:00	51242	124	0	13
+2025-08-18 00:00:00	50838	120	0	14
+2025-08-19 00:00:00	50594	114	0	15
+2025-08-20 00:00:00	50308	125	1	16
+2025-08-21 00:00:00	49850	116	1	17
+2025-08-22 00:00:00	49609	111	1	18
+2025-08-23 00:00:00	49298	116	1	19
+2025-08-24 00:00:00	49022	112	1	20
+2025-08-25 00:00:00	48656	110	1	21
+2025-08-26 00:00:00	48304	112	1	22
+2025-08-27 00:00:00	48107	111	1	23
+2025-08-28 00:00:00	47889	110	1	24
+2025-08-29 00:00:00	47683	137	1	25
+2025-08-30 00:00:00	47447	131	1	26
+2025-08-31 00:00:00	47233	133	1	27
+\.
+
+
+--
+-- TOC entry 5036 (class 0 OID 17706)
+-- Dependencies: 227
+-- Data for Name: monthly_active_users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.monthly_active_users (date, mau__all_countries, mau__egypt, mau__saudi_arabia, mau__united_states, mau__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	37433	35864	622	216	95	1
+2025-08-06 00:00:00	36729	35155	624	215	94	2
+2025-08-07 00:00:00	36140	34574	621	214	95	3
+2025-08-08 00:00:00	35304	33763	613	209	93	4
+2025-08-09 00:00:00	34597	33098	604	202	93	5
+2025-08-10 00:00:00	33906	32445	601	189	90	6
+2025-08-11 00:00:00	33233	31796	589	188	90	7
+2025-08-12 00:00:00	32472	31071	576	178	91	8
+2025-08-13 00:00:00	31862	30484	563	173	88	9
+2025-08-14 00:00:00	31191	29821	561	167	88	10
+2025-08-15 00:00:00	30464	29118	546	160	92	11
+2025-08-16 00:00:00	29826	28492	536	156	92	12
+2025-08-17 00:00:00	29128	27817	528	157	89	13
+2025-08-18 00:00:00	28635	27348	515	161	88	14
+2025-08-19 00:00:00	28176	26898	505	160	88	15
+2025-08-20 00:00:00	27769	26501	501	162	86	16
+2025-08-21 00:00:00	27382	26128	500	157	85	17
+2025-08-22 00:00:00	27003	25756	505	156	79	18
+2025-08-23 00:00:00	26682	25452	506	156	78	19
+2025-08-24 00:00:00	26383	25157	497	159	76	20
+2025-08-25 00:00:00	26020	24802	494	157	76	21
+\.
+
+
+--
+-- TOC entry 5043 (class 0 OID 17735)
+-- Dependencies: 234
+-- Data for Name: tiktok_insights; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tiktok_insights ("Account ID", "Account name", "Currency", "Cost_1", "CPC", "CPM", "Impression", "Clicks", id) FROM stdin;
+Total of 0 results	0	0	0	0	0	0	0	1
+\.
+
+
+--
+-- TOC entry 5032 (class 0 OID 17689)
+-- Dependencies: 223
+-- Data for Name: total_no_of_installation; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.total_no_of_installation (date, installed_audience__all_countries, installed_audience__egypt, installed_audience__saudi_arabia, installed_audience__united_states, installed_audience__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	54873	53442	719	18	127	1
+2025-08-06 00:00:00	54592	53166	711	19	124	2
+2025-08-07 00:00:00	54321	52875	727	22	130	3
+2025-08-08 00:00:00	53938	52491	725	26	126	4
+2025-08-09 00:00:00	53681	52218	737	25	124	5
+2025-08-10 00:00:00	53450	52009	722	24	127	6
+2025-08-11 00:00:00	53097	51648	722	24	124	7
+2025-08-12 00:00:00	52779	51342	719	21	127	8
+2025-08-13 00:00:00	52528	51074	725	27	124	9
+2025-08-14 00:00:00	52267	50800	738	25	124	10
+2025-08-15 00:00:00	51969	50537	720	20	122	11
+2025-08-16 00:00:00	51552	50140	716	20	121	12
+2025-08-17 00:00:00	51242	49834	721	22	124	13
+2025-08-18 00:00:00	50838	49415	723	18	120	14
+2025-08-19 00:00:00	50594	49155	743	19	114	15
+2025-08-20 00:00:00	50308	48872	743	19	125	16
+2025-08-21 00:00:00	49850	48438	724	19	116	17
+2025-08-22 00:00:00	49609	48214	726	19	111	18
+2025-08-23 00:00:00	49298	47899	725	23	116	19
+2025-08-24 00:00:00	49022	47636	731	24	112	20
+2025-08-25 00:00:00	48656	47242	739	25	110	21
+2025-08-26 00:00:00	48304	46887	734	26	112	22
+2025-08-27 00:00:00	48107	46707	726	24	111	23
+2025-08-28 00:00:00	47889	46490	735	23	110	24
+2025-08-29 00:00:00	47683	45940	862	140	137	25
+2025-08-30 00:00:00	47447	45719	860	143	131	26
+2025-08-31 00:00:00	47233	45473	873	136	133	27
+\.
+
+
+--
+-- TOC entry 5034 (class 0 OID 17695)
+-- Dependencies: 225
+-- Data for Name: user_loss_rate; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_loss_rate (date, user_loss_rate_daily__all_countries, user_loss_rate_daily__egypt, user_loss_rate_daily__saudi_arabia, user_loss_rate_daily__united_states, user_loss_rate_daily__united_arab_emirates, id) FROM stdin;
+2025-08-05 00:00:00	0.0059	0.0059	0.0056	-	-	1
+2025-08-06 00:00:00	0.0055	0.0055	0.007	-	-	2
+2025-08-07 00:00:00	0.0063	0.0063	0.0055	-	0.0077	3
+2025-08-08 00:00:00	0.0064	0.0063	0.0097	-	0.0159	4
+2025-08-09 00:00:00	0.0061	0.0061	0.0081	-	0.0081	5
+2025-08-10 00:00:00	0.0051	0.0051	0.0069	-	0.0157	6
+2025-08-11 00:00:00	0.0059	0.0058	0.0083	-	0.0081	7
+2025-08-12 00:00:00	0.0047	0.0047	0.0014	-	0.0079	8
+2025-08-13 00:00:00	0.0054	0.0054	0.0041	-	0.0161	9
+2025-08-14 00:00:00	0.0061	0.0062	-	-	-	10
+2025-08-15 00:00:00	0.006	0.0059	0.0125	-	0.0082	11
+2025-08-16 00:00:00	0.0058	0.0058	-	-	0.0083	12
+2025-08-17 00:00:00	0.0063	0.0062	0.0042	0.0455	-	13
+2025-08-18 00:00:00	0.0067	0.0067	0.0055	-	-	14
+2025-08-19 00:00:00	0.0058	0.0058	0.004	-	0.0088	15
+2025-08-20 00:00:00	0.0055	0.0056	0.0027	-	-	16
+2025-08-21 00:00:00	0.0064	0.0064	0.0069	0.0526	0.0172	17
+2025-08-22 00:00:00	0.0067	0.0066	0.0096	-	0.018	18
+2025-08-23 00:00:00	0.0061	0.0061	0.0041	-	0.0086	19
+2025-08-24 00:00:00	0.0056	0.0056	0.0027	-	0.0089	20
+2025-08-25 00:00:00	0.0037	0.0038	-	-	-	21
+2025-08-26 00:00:00	0.0043	0.0043	0.0027	-	-	22
+2025-08-27 00:00:00	0.0033	0.0033	0.0028	-	-	23
+2025-08-28 00:00:00	0.0044	0.0044	0.0054	-	0.0091	24
+2025-08-29 00:00:00	0.0038	0.0037	0.0035	0.0071	0.0073	25
+2025-08-30 00:00:00	0.0038	0.0038	0.0023	0.007	-	26
+2025-08-31 00:00:00	0.0039	0.0039	0.0023	0.0074	0.0075	27
+\.
+
+
+--
+-- TOC entry 5087 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: audience_growth_rate_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.audience_growth_rate_id_seq', 27, true);
+
+
+--
+-- TOC entry 5088 (class 0 OID 0)
+-- Dependencies: 236
+-- Name: average_rating_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.average_rating_id_seq', 27, true);
+
+
+--
+-- TOC entry 5089 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: daily_active_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.daily_active_users_id_seq', 21, true);
+
+
+--
+-- TOC entry 5090 (class 0 OID 0)
+-- Dependencies: 238
+-- Name: device_acquisition_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.device_acquisition_id_seq', 28, true);
+
+
+--
+-- TOC entry 5091 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: facebook_demographics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.facebook_demographics_id_seq', 21, true);
+
+
+--
+-- TOC entry 5092 (class 0 OID 0)
+-- Dependencies: 240
+-- Name: facebook_insights_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.facebook_insights_id_seq', 64, true);
+
+
+--
+-- TOC entry 5093 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: first_opens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.first_opens_id_seq', 1, false);
+
+
+--
+-- TOC entry 5094 (class 0 OID 0)
+-- Dependencies: 242
+-- Name: google_play_ratings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.google_play_ratings_id_seq', 28, true);
+
+
+--
+-- TOC entry 5095 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: instagram_ageandgender_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.instagram_ageandgender_id_seq', 21, true);
+
+
+--
+-- TOC entry 5096 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: instagram_demographics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.instagram_demographics_id_seq', 33, true);
+
+
+--
+-- TOC entry 5097 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: instagram_followers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.instagram_followers_id_seq', 30, true);
+
+
+--
+-- TOC entry 5098 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: instagram_insights_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.instagram_insights_id_seq', 2, true);
+
+
+--
+-- TOC entry 5099 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: installed_audience_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.installed_audience_id_seq', 27, true);
+
+
+--
+-- TOC entry 5100 (class 0 OID 0)
+-- Dependencies: 248
+-- Name: installed_base_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.installed_base_id_seq', 27, true);
+
+
+--
+-- TOC entry 5101 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: monthly_active_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.monthly_active_users_id_seq', 21, true);
+
+
+--
+-- TOC entry 5102 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: tiktok_insights_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tiktok_insights_id_seq', 1, true);
+
+
+--
+-- TOC entry 5103 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: total_no_of_installation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.total_no_of_installation_id_seq', 27, true);
+
+
+--
+-- TOC entry 5104 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: user_loss_rate_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_loss_rate_id_seq', 27, true);
+
+
+--
+-- TOC entry 4860 (class 2606 OID 17744)
+-- Name: audience_growth_rate audience_growth_rate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.audience_growth_rate
+    ADD CONSTRAINT audience_growth_rate_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4868 (class 2606 OID 17752)
+-- Name: average_rating average_rating_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.average_rating
+    ADD CONSTRAINT average_rating_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4878 (class 2606 OID 17762)
+-- Name: daily_active_users daily_active_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.daily_active_users
+    ADD CONSTRAINT daily_active_users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4876 (class 2606 OID 17770)
+-- Name: device_acquisition device_acquisition_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.device_acquisition
+    ADD CONSTRAINT device_acquisition_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4848 (class 2606 OID 17778)
+-- Name: facebook_demographics facebook_demographics_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.facebook_demographics
+    ADD CONSTRAINT facebook_demographics_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4846 (class 2606 OID 17788)
+-- Name: facebook_insights facebook_insights_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.facebook_insights
+    ADD CONSTRAINT facebook_insights_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4864 (class 2606 OID 17796)
+-- Name: first_opens first_opens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.first_opens
+    ADD CONSTRAINT first_opens_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4870 (class 2606 OID 17804)
+-- Name: google_play_ratings google_play_ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.google_play_ratings
+    ADD CONSTRAINT google_play_ratings_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4856 (class 2606 OID 17812)
+-- Name: instagram_ageandgender instagram_ageandgender_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_ageandgender
+    ADD CONSTRAINT instagram_ageandgender_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4852 (class 2606 OID 17822)
+-- Name: instagram_demographics instagram_demographics_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_demographics
+    ADD CONSTRAINT instagram_demographics_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4854 (class 2606 OID 17832)
+-- Name: instagram_followers instagram_followers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_followers
+    ADD CONSTRAINT instagram_followers_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4850 (class 2606 OID 17840)
+-- Name: instagram_insights instagram_insights_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.instagram_insights
+    ADD CONSTRAINT instagram_insights_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4874 (class 2606 OID 17850)
+-- Name: installed_audience installed_audience_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.installed_audience
+    ADD CONSTRAINT installed_audience_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4872 (class 2606 OID 17858)
+-- Name: installed_base installed_base_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.installed_base
+    ADD CONSTRAINT installed_base_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4866 (class 2606 OID 17866)
+-- Name: monthly_active_users monthly_active_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.monthly_active_users
+    ADD CONSTRAINT monthly_active_users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4880 (class 2606 OID 17874)
+-- Name: tiktok_insights tiktok_insights_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tiktok_insights
+    ADD CONSTRAINT tiktok_insights_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4858 (class 2606 OID 17884)
+-- Name: total_no_of_installation total_no_of_installation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.total_no_of_installation
+    ADD CONSTRAINT total_no_of_installation_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4862 (class 2606 OID 17892)
+-- Name: user_loss_rate user_loss_rate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.user_loss_rate
+    ADD CONSTRAINT user_loss_rate_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 5068 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+
+
+-- Completed on 2025-09-18 15:16:04
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict G5LCvwFFowrhmj03AZ3fBH8TakauEx41yp5FkcCPAECzfjMYEDl7683oXUuk94Z
+
