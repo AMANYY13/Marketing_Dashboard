@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 import { DASHBOARD_CFG } from './marketing.config.js'
-
 // helpers
 const sumDaily = async (prisma, cfg, field, since) => {
   if (!cfg?.model || !cfg?.date || !field) return []

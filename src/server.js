@@ -41,7 +41,7 @@ const admin = new AdminJS({
   dashboard: { component: DashboardComponent },
   componentLoader: loader,
   // نكسر الكاش كل تشغيل
-  version: { admin: true, app: `atfalna-${Date.now()}` },
+  //version: { admin: true, app: `atfalna-${Date.now()}` },
   branding: {
     companyName: 'Atfalna Analytics',
     logo: '/static/logo-atfalna.png',
